@@ -12,6 +12,18 @@
         <title>Cadastrar Conta</title>
     </head>
     <body>
-        <h2></h2>
+        <div><h1>Vinny Soft</h1></div>
+        <ul>
+            <li><a href="CadConta.jsp">Cadastrar nova conta</a></li>
+            <li><a href="CadDeb.jsp">Cadastrar crédito e débito</a></li>
+            <li><a href="EmitirExt.jsp">Emissão de Extrato</a></li>
+        </ul> <br> <br>
+        <h2>Cadastrar conta</h2>
+        <form action="SCad" method="post" >
+            <p> Número da conta <input type="text" name="NumConta" required="required"> </p>
+            <p> CPF <input type="text" name="cpf" required="required"> </p>
+            <p> <input type="submit" name="enviar" value="Enviar"> </p>
+            
+        </form>
     </body>
 </html>
