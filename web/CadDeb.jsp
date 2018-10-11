@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cadastrar Conta</title>
     </head>
     <body>
         <div><h1>Vinny Soft</h1></div>
@@ -18,6 +18,14 @@
             <li><a href="CadDeb.jsp">Cadastrar crédito e débito</a></li>
             <li><a href="EmitirExt.jsp">Emissão de Extrato</a></li>
         </ul> <br> <br>
-        <h1>Hello World!</h1>
+        <h2>Crédito e Débito</h2>
+        <form action="" method="post" >
+            <p> Valor da Operação <input type="text" name="VOper" required="required"> </p>
+            <p> CPF do Responsável <input type="text" name="cpf" required="required"> </p>
+            <p> id Da Conta <input type="text" name="idconta" required="required"> </p>
+            <p> Tipo da operação <input type="radio" name="oper" value="+" checked > Crédito </p>
+            <p> Tipo da operação <input type="radio" name="oper" value="-" > Débito </p>
+            <p>  <input type="submit" name="enviar" value="Enviar"> </p>
+        </form>
     </body>
 </html>

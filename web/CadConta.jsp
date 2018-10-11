@@ -23,7 +23,7 @@
             <p> Número da conta <input type="text" name="NumConta" required="required"> </p>
             <p> CPF <input type="text" name="cpf" required="required"> </p>
             <p> <input type="submit" name="enviar" value="Enviar"> </p>
-            
+            <p> <input type="reset" name="limpar" value="Limpar"> </p>
         </form>
     </body>
 </html>
