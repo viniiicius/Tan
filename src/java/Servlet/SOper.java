@@ -5,13 +5,14 @@
  */
 package Servlet;
 
-import static com.sun.xml.internal.ws.api.message.Packet.Status.Response;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -24,8 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Vinicius
  */
-@WebServlet(name = "SCad", urlPatterns = {"/SCad"})
-public class SCad extends HttpServlet {
+@WebServlet(name = "CadOper", urlPatterns = {"/CadOper"})
+public class SOper extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,9 +39,9 @@ public class SCad extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-    }
+           }
 
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -53,8 +54,12 @@ public class SCad extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    String NumConta = request.getParameter("NumConta");
-    String CPF = request.getParameter("cpf");
+    Float Voperacao = Float.parseFloat(request.getParameter("oper") + request.getParameter("VOper").replace(",", ".")); 
+    String CPF = request.getParameter("cpf"); 
+    int idConta = Integer.parseInt(request.getParameter("idconta"));
+        GregorianCalendar c = new GregorianCalendar();
+        SimpleDateFormat data = new SimpleDateFormat("YYYY/MM/dd H:mm:ss");
+    
     response.getWriter().println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
@@ -70,9 +75,11 @@ public class SCad extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost/tan", "root", "");
-            PreparedStatement ps = conexao.prepareStatement("INSERT INTO `contacorrente`( `NumeroConta`, `CPF_Titular`) VALUES (?,?)");
-            ps.setString(1, NumConta);
-            ps.setString(2, CPF);
+            PreparedStatement ps = conexao.prepareStatement("INSERT INTO `operacao`(`DataOperacao`, `ValorOperacao`, `CPFResponsavelOperacao`, `idContaCorrente`) VALUES (?,?,?,?)");
+            ps.setString(1, data.format(c));
+            ps.setFloat(2, Voperacao);
+            ps.setString(3, CPF);
+            ps.setInt(4, idConta);
             ps.execute();
             conexao.close();
             response.getWriter().println("Cadastro realizado!");
@@ -83,6 +90,7 @@ public class SCad extends HttpServlet {
         }
         response.getWriter().println("</body>");
         response.getWriter().println("</html>");
+   
     }
 
     /**
