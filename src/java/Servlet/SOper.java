@@ -25,7 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Vinicius
  */
-@WebServlet(name = "CadOper", urlPatterns = {"/CadOper"})
+@WebServlet(name = "SOper", urlPatterns = {"/SOper"})
+//Antes estava CadOper
 public class SOper extends HttpServlet {
 
     /**
@@ -56,7 +57,7 @@ public class SOper extends HttpServlet {
             throws ServletException, IOException {
     Float Voperacao = Float.parseFloat(request.getParameter("oper") + request.getParameter("VOper").replace(",", ".")); 
     String CPF = request.getParameter("cpf"); 
-    int idConta = Integer.parseInt(request.getParameter("idconta"));
+    int idConta = Integer.parseInt(request.getParameter("idConta"));
         GregorianCalendar c = new GregorianCalendar();
         SimpleDateFormat data = new SimpleDateFormat("YYYY/MM/dd H:mm:ss");
     
@@ -82,7 +83,7 @@ public class SOper extends HttpServlet {
             ps.setInt(4, idConta);
             ps.execute();
             conexao.close();
-            response.getWriter().println("Cadastro realizado!");
+            response.getWriter().println("Operação realizada!");
         } catch (SQLException ex) {
             Logger.getLogger(SCad.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

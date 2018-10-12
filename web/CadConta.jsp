@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastrar Conta</title>
+        <title>Bank</title>
     </head>
     <body>
         <div><h1>Vinny Soft</h1></div>
