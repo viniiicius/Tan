@@ -8,6 +8,7 @@ package Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javax.print.attribute.Size2DSyntax.MM;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,6 +63,7 @@ public class SOper extends HttpServlet {
         GregorianCalendar c = new GregorianCalendar();
         SimpleDateFormat data = new SimpleDateFormat("YYYY/MM/dd H:mm:ss");
     
+   
     response.getWriter().println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
